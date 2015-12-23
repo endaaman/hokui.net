@@ -1,0 +1,76 @@
+.col-sm-12.col-md-10.col-md-push-1
+    h1 プロフィール
+    p {{user.handle_name}}さんのプロフィールです。
+
+    .tabs
+        .tab(v-class="'tab-active': viewMode === 'detail'")
+            a(href="/profile") 詳細
+        .tab(v-class="'tab-active': viewMode === 'edit'")
+            a(href="/profile/edit") 編集
+        .tab(v-class="'tab-active': viewMode === 'setting'")
+            a(href="/profile/setting") 設定
+
+    .spacer
+
+    div(v-if="viewMode === 'json'")
+        pre
+            code {{subject | json}}
+        
+    table.table(v-if="viewMode === 'detail'")
+        tr
+            th ハンドルネーム
+            td {{user.handle_name}}
+        tr
+            th 氏名
+            td {{user.family_name}} {{user.given_name}}
+        tr
+            th 期
+            td {{cyLabel}}
+        tr(v-if="user.admin")
+            th 管理者
+            td あなたは管理者です！
+        tr
+            th 生年月日
+            td {{user.birthday | date 'YYYY年M月D日'}}
+        tr
+            th ELMSメールアドレス
+            td {{user.email}}
+        tr
+            th 携帯メールアドレス
+            td
+                span(v-if="user.email_mobile") {{user.email_mobile}}
+                span.text-muted(v-if="!user.email_mobile") 登録されていません
+        tr
+            th 登録日
+            td {{user.created_at | date 'YYYY年M月D日'}}
+
+    div(v-show="viewMode === 'edit'")
+        div(v-view="profile_edit")
+
+    div(v-if="viewMode === 'setting'")
+        p 動作等の設定をします。設定は#[strong ブラウザごと]に保存されます。
+        form(v-on="submit: performSaveSetting($event)")
+            .control-group
+                .col-sm-3
+                    label.control-label 動作
+                .col-sm-9
+                    input.control(
+                        type="checkbox"
+                        v-model="userSetting.useTargetBlank"
+                        id="useTargetBlank")
+                    label.control-label(for="useTargetBlank") プレビューを押したとき新規タブで開く
+                    .control-help デフォルト：ON
+
+                    input.control(
+                        type="checkbox"
+                        v-model="userSetting.closeSidebarOnTapOutside"
+                        id="closeSidebarOnTapOutside")
+                    label.control-label(for="closeSidebarOnTapOutside") サイドバーの外をタップorクリックした時にサイドバーを閉じる
+                    .control-help デフォルト：ON
+
+            .col-xs-12
+                hr
+
+            .row
+                .col-sm-9.col-sm-push-3
+                    button.btn.btn-green(type="submit" v-attr="disabled: invalid") 設定する

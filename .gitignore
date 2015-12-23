@@ -18,19 +18,8 @@
 # Ignore application configuration
 /config/application.yml
 
-# uploaded files dir for dev/test
-/misc/uploaded/*
-!/misc/uploaded/000001-dummy.pdf
-!/misc/uploaded/000002-ダミー.pdf
-
 # front-end part below
 
 npm-debug.log
 /node_modules
-
-/.sass-cache
-
-/public
 /dist
-
-/build-report

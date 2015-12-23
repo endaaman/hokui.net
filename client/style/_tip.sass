@@ -1,5 +1,5 @@
 $tip-padding-v: 1px
-$tip-font-size: $font-size-small
+$tip-font-size: 14px
 $tip-height: $tip-padding-v * 2 + $tip-font-size * $line-height-base
 
 $tip-margin-bottom: 2px
@@ -7,53 +7,39 @@ $tip-margin-bottom: 2px
 =tip-variant($color)
     color: $color
     border-color: $color
-    &:not(.tip--static):not(.tip--disabled)
-        &.tip--active, &:hover
-            background-color: $color
-            color: $body-bg
-
-
-.tips
-    +clearfix
-    margin-bottom: 6px
-
-    &.tips--nomargin
-        margin-bottom: 0
+    &:hover, &.tip-active
+        background-color: $color
+        color: $bg-color
 
 .tip
-    border-radius: $tip-height / 2
-    font-size: $tip-font-size
-    border-width: 1px
+    $h: 20px
+    display: inline-block
+    height: $h
+    line-height: $h
+
+    font-size: 13px
+    border-radius: $h / 2
+
+    padding: 0 ($h / 2)
+
+    margin: 4px 0
+
     border-style: solid
-    float: left
-    margin-right: $tip-height / 2
-    margin-bottom: $tip-margin-bottom
-    display: block
+    border-width: 1px
 
-    &:last-child
-        margin-right: 0
+    cursor: pointer
 
-    & > a, span
+    a
         display: block
         width: 100%
         height: 100%
         padding: $tip-padding-v $tip-height / 2
-        +anchor-non-decoration
+        +link-unstyled
         color: inherit
 
 
-.tip--disabled
-    opacity: $disabled-opacity
-
+.tip-disabled
+    opacity: 0.5
 
 .tip
-    +tip-variant($brand-primary)
-    &.tip--secondary
-        +tip-variant($brand-secondary)
-
-    &.tip--accent
-        +tip-variant($brand-accent)
-
-
-ul.tips
-    +list-unstyled
+    +tip-variant($color-green)

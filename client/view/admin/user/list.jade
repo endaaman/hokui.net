@@ -1,0 +1,56 @@
+h1 ユーザー
+
+//- table.table.table-condensed
+//-     tr
+//-         th 状態
+//-         td
+//-             ul.list-inline.list-nomb
+//-                 li(v-repeat="statusFilters")
+//-                     .tip(
+//-                         v-on="click: users.filter('status', $key)"
+//-                         v-class="'tip-active': users.filtered('status', $key)")
+//-                         | {{$value}}
+//-     tr(v-if="classYears")
+//-         th 学年
+//-         td
+//-             ul.list-inline.list-nomb
+//-                 li
+//-                     .tip(v-on="click: users.filter('cy', 0)" v-class="'tip-active': users.filtered('cy', 0)") すべて
+//-                 li(v-repeat="cy: classYears")
+//-                     .tip(v-on="click: users.filter('cy', cy.id)" v-class="'tip-active': users.filtered('cy', cy.id)") {{cy.year}}期
+//- 
+//-     tr
+//-         th 検索
+//-         td
+//-             input.control.control-small(
+//-                 type="search"
+//-                 v-on="input: users.filter('search', $event.target.value)"
+//-                 placeholder="HN、氏名、メールアドレスに検索をかけます")
+//- 
+table.table(v-if="users && classYears")
+    thead
+        tr
+            th ID
+            th.text-left HN
+            th.text-left 本名
+            th.text-left.hidden-xs-sm Email
+            th
+                | 期
+
+            th
+                | 状態
+
+    tr(v-for="user in users" track-by="id")
+        td.text-center {{user.id}}
+            
+        td.allbr
+            a(v-link="'/admin/user/' + user.id") {{user.handle_name}}
+            td {{user.family_name + ' ' + user.given_name}}
+        td.hidden-xs-sm {{user.email | omitDomain}}
+        td.text-center
+            a(v-link="'/admin/class_year/' + user.class_year_id")
+                | {{cyLabel(user.class_year_id)}}
+                span.hidden-xs-sm 期
+        td.text-center
+            //- status-icon(user="{{user}}")
+            | {{user.approval_state}}

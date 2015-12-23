@@ -1,0 +1,49 @@
+p
+    a(href="/admin/subject") 一覧へ戻る
+    
+loading(show="{{!(rejected || resolved)}}")
+
+p(v-if="rejected") 該当する教科が見つかりませんでした。
+
+div(v-if="subject")
+    h2 {{subject.title_ja}}
+    .tabs
+        .tab(v-class="'tab-active': viewMode === 'detail'")
+            a(href="/admin/subject/{{subject.id}}") 標準
+        .tab(v-class="'tab-active': viewMode === 'json'")
+            a(href="/admin/subject/{{subject.id}}/json") JSON
+        .tab(v-class="'tab-active': viewMode === 'edit'")
+            a(href="/admin/subject/{{subject.id}}/edit") 編集
+        .tab(v-class="'tab-active': viewMode === 'delete'")
+            a(href="/admin/subject/{{subject.id}}/delete") 削除
+
+    .spacer
+    
+
+    div(v-if="viewMode === 'json'")
+        pre
+            code {{subject | json}}
+    
+    table.table(v-if="viewMode === 'detail'")
+        tr
+            th ID
+            td {{subject.id}}
+        tr
+            th 日本語名
+            td {{subject.title_ja}}
+        tr
+            th 英語名
+            td {{subject.title_en}}
+        tr
+            th 作成日時
+            td {{subject.created_at}}
+        tr
+            th 更新日時
+            td {{subject.updated_at}}
+    
+    .row(v-if="viewMode === 'delete'")
+        model-delete(model="{{subject}}" next="/admin/subject")
+
+
+div(v-show="viewMode === 'edit'")
+    div(v-view="admin_edit")

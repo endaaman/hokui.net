@@ -1,0 +1,29 @@
+
+.col-sm-12.col-md-10.col-md-push-1
+
+    h1 Welcome to hokui.net
+    h2 おしらせ
+    //- ul.news(v-if="newss")
+    //-     li(v-repeat="news: newss")
+    //-         pre {{news | json}}
+    
+    ul
+        li
+            a(v-link="{name: 'home'}") home
+        li
+            a(v-link="{name: 'login'}") login
+        li
+            a(v-link="{name: 'logout'}") logout
+        li
+            a(v-link="{name: 'signup'}") signup
+        li
+            a(v-link="{name: 'help'}") help
+        li
+            a(v-link="{name: 'admin'}") admin
+    p
+        button.btn(v-on:click="loader()") open
+    p
+        button.btn(v-on:click="toast()") open
+
+    pre
+        code {{user | json}}

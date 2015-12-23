@@ -1,4 +1,14 @@
-//== NOTE: .tooltip makes element 'position: relative'
+$tooltip-padding: 4px 8px
+$tooltip-z: 100
+
+$tooltip-arrow-size: 6px
+$tooltip-bg: $color-darkgray
+$tooltip-color: $bg-color
+$tooltip-font-size: 12px
+$tooltip-border-radius: 3px
+$tooltip-color: #fff
+$tooltip-bg: #000
+$tooltip-opacity: .9
 
 
 .tooltip
@@ -34,7 +44,7 @@
 
 
 .tooltip[tooltip]
-    &.tooltip:not(.tooltip--toggle):hover, &.tooltip--shown
+    &.tooltip:not(.tooltip-toggle):hover, &.tooltip-shown
         &:after
             padding: $tooltip-padding
             content: attr(tooltip)
@@ -114,67 +124,30 @@
         margin-left: $tooltip-arrow-size
         transform: translate(0%, -50%)
 
-.tooltip.tooltip--top
-    &:not(.tooltip--toggle):hover
+.tooltip.tooltip-top
+    &:not(.tooltip-toggle):hover
         @extend %tooltip-top-shown
-    &.tooltip--shown
+    &.tooltip-shown
         @extend %tooltip-top-shown
 
 
-.tooltip.tooltip--bottom:not(.tooltip--hidden)
-    &:not(.tooltip--toggle):hover
+.tooltip.tooltip-bottom:not(.tooltip-hidden)
+    &:not(.tooltip-toggle):hover
         @extend %tooltip-bottom-shown
 
-    &.tooltip--shown
+    &.tooltip-shown
         @extend %tooltip-bottom-shown
 
-.tooltip.tooltip--left
-    &:not(.tooltip--toggle):hover
+.tooltip.tooltip-left
+    &:not(.tooltip-toggle):hover
         @extend %tooltip-left-shown
 
-    &.tooltip--shown
+    &.tooltip-shown
         @extend %tooltip-left-shown
 
-.tooltip.tooltip--right
-    &:not(.tooltip--toggle):hover,
+.tooltip.tooltip-right
+    &:not(.tooltip-toggle):hover,
         @extend %tooltip-right-shown
 
-    &.tooltip--shown
+    &.tooltip-shown
         @extend %tooltip-right-shown
-
-
-
-.tooltip--primary
-    &:before
-        border-top-color: $brand-primary-dark
-        border-bottom-color: $brand-primary-dark
-        border-left-color: $brand-primary-dark
-        border-right-color: $brand-primary-dark
-
-    &:after
-        color: #fff
-        background-color: $brand-primary-dark
-
-
-.tooltip--secondary
-    &:before
-        border-top-color: $brand-secondary-dark
-        border-bottom-color: $brand-secondary-dark
-        border-left-color: $brand-secondary-dark
-        border-right-color: $brand-secondary-dark
-
-    &:after
-        color: #fff
-        background-color: $brand-secondary-dark
-
-
-.tooltip--accent
-    &:before
-        border-top-color: $brand-accent-dark
-        border-bottom-color: $brand-accent-dark
-        border-left-color: $brand-accent-dark
-        border-right-color: $brand-accent-dark
-
-    &:after
-        color: #fff
-        background-color: $brand-accent-dark

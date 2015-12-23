@@ -1,0 +1,127 @@
+.wrap
+    position: relative
+    min-height: 100%
+    +clearfix
+    padding-bottom: 24px
+
+
+.header
+    position: fixed
+    top: 0
+    width: 100%
+    margin: 0
+    padding: 0
+    z-index: $header-z
+
+    height: $header-height
+    @media (max-width: $screen-break-point)
+        height: $header-narrow-height
+
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.25)
+    background-color: white
+
+
+.header-shaddow
+    padding-top: $header-height
+    @media (max-width: $screen-break-point)
+        padding-top: $header-narrow-height
+
+
+a.header-title
+    +link-unstyled
+    display: block
+    color: $text-color
+
+    text-align: center
+    width: 100%
+    height: $header-narrow-height
+    line-height: $header-narrow-height
+    font-size: 24px
+
+    @media (min-width: $screen-break-point)
+        height: $header-height
+        line-height: $header-height
+        font-size: 32px
+
+    a
+        color: $text-color
+        +link-unstyled
+
+    .accent-character
+        color: $red-500
+
+
+
+.header-links
+    @media (max-width: $screen-break-point)
+        display: none
+
+    +clearfix
+    position: absolute
+    top: 0
+    right: 0
+    // left: $sidebar-width
+    padding: 0 12px
+
+    .header-link
+        float: left
+        font-size: 18px
+        margin-left: 16px
+        height: $header-height
+        line-height: $header-height
+        a
+            +link-unstyled
+            color: $text-color
+            padding: 4px 2px
+
+            border-bottom-style: solid
+            border-bottom-color: $link-color
+            border-bottom-width: 0px
+            transition: border-bottom-width .2s ease
+            &:hover
+                border-bottom-width: 2px
+
+    .header-link-active
+        a
+            border-bottom-width: 2px
+
+
+
+.footer
+    position: absolute
+    bottom: 0
+    width: 100%
+
+
+
+.footer-items
+    +clearfix
+    position: absolute
+    float: right
+    z-index: 0
+    bottom: 12px
+    right: 12px
+    height: $footer-height
+
+.footer-item-text, .footer-item
+    display: block
+    float: left
+
+
+.footer-item-text
+    font-size: 12px
+    margin-left: 8px
+    margin-right: 3px
+    height: $footer-height
+    line-height: $footer-height
+    a
+        color: $text-color
+
+
+.footer-item
+    margin-left: 3px
+    margin-right: 3px
+
+    height: $footer-height
+    img
+        height: $footer-height

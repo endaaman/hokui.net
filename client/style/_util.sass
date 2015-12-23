@@ -1,110 +1,58 @@
-.hidden
-    display: none
-
 .clearfix
     +clearfix
+    
+button.unstyled
+    +button-unstyled
 
-.center-block
-    +center-block
+a.unstyled
+    +link-unstyled
 
-.pull-right
-    float: right !important
+ul, ol
+    &.list-unstyled
+        +list-unstyled
 
-.pull-left
-    float: left !important
+ul.list-inline
+    +clearfix
+    margin-left: 0
+    padding: 0
+    list-style: none
+    li
+        margin-right: 8px
+        float: left
+    li:last-child
+        margin-right: 0
 
-.text-hide
-    +text-hide
-
-.mono
-    font-family: $font-family-monospace
-
-.serif
-    font-family: $font-family-serif
-
-
-.text-small
-    font-size: $font-size-small
-.text-large
-    font-size: $font-size-large
-
+ul.list-nomb
+    margin-bottom: 0
 
 .text-left
-    text-align: left
-.text-right
-    text-align: right
+    text-align: left !important
+
 .text-center
-    text-align: center
-.text-justify
-    text-align: justify
-.text-nowrap
-    white-space: nowrap
+    text-align: center !important
 
-.text-middle
-    vertical-align: middle
+.text-right
+    text-align: right !important
 
-.text-lowercase
-    text-transform: lowercase
-.text-uppercase
-    text-transform: uppercase
-.text-capitalize
-    text-transform: capitalize
-
-.text-muted
-    color: $text-muted
-
-.list-unstyled
-    +list-unstyled
-
-.list-inline
-    +list-unstyled
-    margin-left: -5px
-
-    & > li
-        display: inline-block
-        padding-left: 5px
-        padding-right: 5px
-
-
-.text-primary
-    color: $brand-primary
-.text-secondary
-    color: $brand-secondary
-.text-accent
-    color: $brand-accent
-
-
-.v-spacer
-    margin-bottom: $line-height-computed
-
-.nobr
-    white-space: nowrap
+.spacer
+    width: 100%
+    height: 1px
+    margin-bottom: $line-height-computed / 2 - 1px
 
 .clickable
     cursor: pointer
 
-.inline-block
-    display: inline-block
+.nobr
+    white-space: nowrap
 
-.button-unstyled
-    +button-non-decoration
+.allbr
+    word-break: break-all
 
-.link-unstyled
-    +anchor-non-decoration
-    color: $text-color
+.text-small
+    font-size: 12px
 
-    &:link, &:visited, &:hover
-        color: $text-color
-
-
-a.link-wrap
-    display: block
-    color: $text-color
-    +anchor-non-decoration
-
-
-.page-block
-    min-height: 100%
-
-.no-mb
-    margin-bottom: 0
+.unselectable
+    user-select: none
+    -moz-user-select: none
+    -webkit-user-select: none
+    -ms-user-select: none

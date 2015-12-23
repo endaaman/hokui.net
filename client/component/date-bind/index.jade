@@ -1,0 +1,13 @@
+.raw.row-grow
+    .col-xs-4
+        select.control(v-model="year")
+            option(v-for="option in years" v-bind:value="option.value")
+                | {{option.text}}
+    .col-xs-4
+        select.control(v-model="month")
+            option(v-for="option in months" v-bind:value="option.value")
+                | {{option.text}}
+    .col-xs-4
+        select.control(v-model="date")
+            option(v-for="option in dates" v-bind:value="option.value")
+                | {{option.text}}

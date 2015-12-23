@@ -1,0 +1,38 @@
+.wrap
+    .header
+        a.header-title(v-link="{name: 'home'}")
+            | H
+            span.accent-character O
+            | KUI.NET
+            
+    .header-shaddow
+
+    router-view
+
+    .footer
+        .footer-items
+            .footer-item-text
+                a(v-link="'home'") Top
+            .footer-item-text
+                a(v-link="'help'") Help
+            .footer-item-text(v-show="active")
+                a(v-link="'credit'") Credit
+            .footer-item-text(v-show="active")
+                a(v-link="'logout'") Logout
+            .footer-item-text Developing on
+            a.footer-item.tooltip.tooltip-top(
+                href="https://github.com/hokui/hokui.net" 
+                target="_blank"
+                tooltip="Github")
+                img(src=require("../../assets/octocat.png"))
+            .footer-item-text Powered by
+            a.footer-item.tooltip.tooltip-top(
+                href="http://rubyonrails.org/"
+                target="_blank"
+                tooltip="Ruby on Rails")
+                img(src=require("../../assets/rails.png"))
+            a.footer-item.tooltip.tooltip-top(
+                href="http://vuejs.org/"
+                target="_blank"
+                tooltip="Vue.js")
+                img(src=require("../../assets/vue.png"))

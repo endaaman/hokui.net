@@ -3,31 +3,22 @@
     max-width: 100%
     border-collapse: collapse
     margin-bottom: $line-height-computed
+    thead
+        tr
+            border-bottom: solid 1px $grey-700
 
     td, th
-        padding: $table-cell-padding
+        padding: 6px 8px
 
     th
         word-break: keep-all
-        background-color: $table-head-bg
         text-align: center
 
     tr
         word-break: normal
-        background-color: $body-bg
-        border-bottom: solid 1px $table-border-color
+        border-bottom: solid 1px $grey-400
 
 
-.table--condensed
+.table-condensed
     td, th
-        padding: $table-condensed-cell-padding
-
-.table--bordered
-    border-radius: $table-border-radius
-    border: solid 1px $table-border-color
-    td, th
-        border: solid 1px $table-border-color
-
-.table
-    .table__head
-        border-bottom: 2px solid $brand-accent
+        padding: 4px 6px

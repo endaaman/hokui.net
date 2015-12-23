@@ -1,4 +1,11 @@
+
+
 .btn
+    appearance: none
+    -webkit-appearance: none
+    -moz-appearance: none
+    // outline: none
+
     display: inline-block
     margin-bottom: 0
     font-weight: normal
@@ -8,74 +15,90 @@
     cursor: pointer
     background-image: none
     border: 1px solid transparent
-    // white-space: nowrap
     user-select: none
 
-    padding: $btn-padding-v $btn-padding-h
-    font-size: $font-size-base
-    line-height: $line-height-base
-    border-radius: $border-radius-base
+    padding: 6px 8px
+    font-size: 16px
+    line-height: 20px
+    border-radius: 2px
 
-    &,
-    &:active,
-    &.active
-        &:focus,
-        &.focus
-            +tab-focus
+    transition-property: background-color, color, border-color
+    transition-duration: .2s
+    transition-timing-function: ease-in-out
 
     &:hover,
     &:focus,
-    &.focus
         text-decoration: none
 
+    &[disabled]
+        +disabled
 
-.btn--block
+.btn-small
+    padding: 4px 4px
+    line-height: 16px
+    font-size: 13px
+
+.btn-block
     display: block
     width: 100%
 
 
-.btn[disabled], .btn--disabled
-    cursor: $cursor-disabled
-    pointer-events: none
-    opacity: $disabled-opacity
-    box-shadow: none
+=make-btn($color, $bg, $active-bg, $border, $active-border)
+    color: $color
+    background-color: $bg
+    border: 1px solid $border
+
+    &:active
+        background-image: none
+
+    &:hover,
+    &:focus,
+    &:active
+        background-color: $active-bg
+        border-color: $active-border
+
+
+=make-btn-ghost($color)
+    color: $color
+    background-color: transparent
+    border: 1px solid $color
+
+    &:active
+        background-image: none
+
+    &:hover,
+    &:focus,
+    &:active
+        color: $bg-color
+        background-color: $color
+        border-color: $color
 
 .btn
-    &.btn--lg
-        font-size: $font-size-large
-        padding: $btn-padding-v-sm $btn-padding-h-lg
+    &:not(.btn-ghost)
+        +make-btn($text-color, $grey-700, $grey-400, $grey-700, $grey-400)
+    &.btn-ghost
+        +make-btn-ghost($text-color)
 
-    &.btn--sm
-        font-size: $font-size-small
-        padding: $btn-padding-v-sm $btn-padding-h-sm
+.btn-green
+    &:not(.btn-ghost)
+        +make-btn($text-color-inverted, $green-500, $green-700, $green-400, $green-600)
+    &.btn-ghost
+        +make-btn-ghost($green-500)
 
-    &.btn--xs
-        font-size: $font-size-small
-        padding: $btn-padding-v-xs $btn-padding-h-xs
+.btn-red
+    &:not(.btn-ghost)
+        +make-btn($text-color-inverted, $red-600, $red-400, $red-600, $red-300)
+    &.btn-ghost
+        +make-btn-ghost($red-600)
 
+.btn-yellow
+    &:not(.btn-ghost)
+        +make-btn($text-color-inverted, $yellow-600, $yellow-400, $yellow-600, $yellow-300)
+    &.btn-ghost
+        +make-btn-ghost($yellow-600)
 
-
-.btn:not(.btn--ghost)
-    +button-variant(#333, #fff, #ccc)
-
-    &.btn--primary
-        +button-variant(#fff, $brand-primary, $brand-primary-dark)
-
-    &.btn--secondary
-        +button-variant(#fff, $brand-secondary, $brand-secondary-dark)
-
-    &.btn--accent
-        +button-variant(#fff, $brand-accent, $brand-accent-dark)
-
-
-.btn.btn--ghost
-    +button-ghost-variant($gray)
-
-    &.btn--primary
-        +button-ghost-variant($brand-primary)
-
-    &.btn--secondary
-        +button-ghost-variant($brand-secondary)
-
-    &.btn--accent
-        +button-ghost-variant($brand-accent)
+.btn-blue
+    &:not(.btn-ghost)
+        +make-btn($text-color-inverted, $blue-600, $blue-400, $blue-600, $blue-300)
+    &.btn-ghost
+        +make-btn-ghost($blue-600)
